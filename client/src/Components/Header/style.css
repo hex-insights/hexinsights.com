@@ -1,0 +1,18 @@
+header {
+    border: 1px solid var(--color);
+    border-top: none;
+    border-right: none;
+    position: fixed;
+    top: 0;
+    right: 0;
+    transition: opacity .25s ease-out;
+}
+
+header.hidden {
+    opacity: 0;
+    pointer-events: none;
+}
+
+header h1 {
+    margin: 0;
+}
