@@ -6,6 +6,10 @@ const ContactSection: React.FC = () => {
     return (
         <section className="contact">
             <Heading id="contact" level={ 2 }>Contact</Heading>
+
+            <p>
+                If you're ready to bring your organization to the next level, let's get in touch: <a href="mailto:info@hexinsights.com">info@hexinsights.com</a>.
+            </p>
         </section>
     )
 }
