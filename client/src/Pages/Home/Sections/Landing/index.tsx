@@ -1,11 +1,16 @@
 import React from "react";
-import Heading from "../../../../Components/Heading";
+import Logo from "../../../../Components/Logo";
+import CompanyName from "../../../../Components/CompanyName";
+import "./style.css";
 
 
 const LandingSection: React.FC = () => {
     return (
         <section className="landing">
-            <Heading id="landing" level={ 1 }>Hex Insights</Heading>
+            <div className="hero-container">
+                <Logo animateOnMount/>
+                <CompanyName animateOnMount wordFlow="column"/>
+            </div>
         </section>
     )
 }

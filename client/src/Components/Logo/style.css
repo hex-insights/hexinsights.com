@@ -1,0 +1,21 @@
+.logo-container .logo-cls-1,
+.logo-container .logo-cls-2 {
+    fill: none;
+    stroke: var(--color);
+    stroke-miterlimit: 10;
+}
+
+.logo-container .logo-cls-2 {
+    fill-rule: evenodd;
+}
+
+.logo-container svg polygon,
+.logo-container svg path {
+    stroke-dasharray: var(--path-length);
+}
+
+
+.logo-container.animate-on-mount svg polygon,
+.logo-container.animate-on-mount svg path {
+    animation: draw-svg 2s var(--default-animation-timing-fuction) .5s both;
+}

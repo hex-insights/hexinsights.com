@@ -1,0 +1,99 @@
+section.landing {
+    height: 100vh;
+}
+
+section.landing .hero-container {
+    height: 100%;
+    padding-top: 2rem;
+    padding-bottom: calc(2rem + var(--iphone-browser-bottom-nav-height));
+    display: flex;
+    flex-flow: column;
+    justify-content: center;
+    align-items: center;
+}
+
+@media (min-width: 900px) {
+    section.landing .hero-container {
+        padding-bottom: 2rem;
+    }
+}
+
+section.landing .hero-container .logo-container {
+    width: 80vw;
+    height: calc(4 * 80vw / 3.4641016151); /* Width: 2 * sqrt(3) * x; Height: 4 * x (necessary for mobile) */
+    display: flex;
+    justify-content: center;
+    margin-bottom: 5vh;
+}
+
+section.landing .hero-container .logo-container svg {
+    width: 100%;
+    height: auto;
+}
+
+section.landing .hero-container .company-name-container {
+    width: 65.64551422vw; /* Taken from width at aspect ratio change point */
+    height: fit-content;
+    display: flex;
+    justify-content: center;
+}
+
+section.landing .hero-container .company-name-container svg {
+    width: 100%;
+    height: auto;
+}
+
+/*
+    Transition aspect ratio is given by the formula:
+        W/H (aspect ratio) = sqrt(3) / 2 * HP / WP
+    Where HP is height percentage and WP and width percentage.
+    In this case HP is 0.6 (60vh) and WP is 0.8 (80vw).
+*/
+@media (min-aspect-ratio: 519615242/800000000) {
+    section.landing .hero-container .logo-container {
+        width: fit-content;
+        height: 60vh;
+    }
+
+    section.landing .hero-container .logo-container svg {
+        width: auto;
+        height: 100%;
+    }
+
+    section.landing .hero-container .company-name-container {
+        width: fit-content;
+        height: 25vh;
+    }
+
+    section.landing .hero-container .company-name-container svg {
+        width: auto;
+        height: 100%;
+    }
+}
+
+section.landing .company-name-container {
+    align-items: center;
+}
+
+section.landing .company-name-container .company-name-word-container,
+section.landing .company-name-container .company-name-word-container svg {
+    width: 100%;
+}
+
+section.landing .company-name-container .company-name-hex-container {
+    margin-bottom: 1rem;
+}
+
+@media (orientation: landscape) {
+    section.landing .hero-container {
+        padding-top: 0;
+        padding-bottom: 0;
+        flex-flow: row;
+    }
+
+    section.landing .hero-container .logo-container {
+        width: 35vw;
+        margin-right: 3rem;
+        margin-bottom: 0;
+    }
+}
