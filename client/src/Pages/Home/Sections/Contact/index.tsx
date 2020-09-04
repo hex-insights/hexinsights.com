@@ -4,11 +4,11 @@ import Heading from "../../../../Components/Heading";
 
 const ContactSection: React.FC = () => {
     return (
-        <section className="contact">
+        <section className="main-section contact">
             <Heading id="contact" level={ 2 }>Contact</Heading>
 
             <p>
-                If you're ready to bring your organization to the next level, let's get in touch: <a href="mailto:info@hexinsights.com">info@hexinsights.com</a>.
+                If you've got an interesting project and you're ready to bring your organization to the next level, let's get in touch: <a href="mailto:Hex Insights <info@hexinsights.com>">info@hexinsights.com</a>.
             </p>
         </section>
     )

@@ -12,6 +12,8 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    --default-font-size: 1.1rem;
+    font-size: var(--default-font-size);
 }
 
 html {
@@ -27,8 +29,20 @@ body {
     min-height: 100vh;
 }
 
-section {
-    min-height: 100vh;
+section.main-section {
+    --h-padding: 10vw;
+    padding: 0 var(--h-padding) 0 calc(var(--h-padding) - var(--side-bar-width));
+    margin-bottom: 3.5rem;
+}
+
+section.sub-section {
+    margin-bottom: 2.5rem;
+}
+
+p {
+    width: 80vw;
+    max-width: 60rem;
+    margin-bottom: 1rem;
 }
 
 a {

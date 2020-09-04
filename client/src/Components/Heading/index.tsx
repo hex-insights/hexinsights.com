@@ -20,7 +20,7 @@ const Heading: React.FC<HeadingProps> = ({ level, id, className, children }) => 
     const pathname = "/"; // TODO: find a way to get this dynamically
 
     return (
-        <HComponent id={ id } className={ `heading ${className || ""}` }>
+        <HComponent id={ id } className={ `heading ${className || ""} ${ !!id ? "linked" : ""}` }>
             { !!id && <Link to={ `${pathname}#${id}` }>x</Link> } { children }
         </HComponent>
     )

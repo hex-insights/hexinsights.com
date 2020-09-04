@@ -3,6 +3,7 @@
 }
 
 .side-bar {
+    background-color: var(--background-color);
     width: var(--side-bar-width);
     height: 100vh;
     border-right: 1px solid var(--color);

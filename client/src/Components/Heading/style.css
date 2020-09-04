@@ -2,23 +2,32 @@ h1, h2 {
     font-family: bungee, sans-serif;
     font-weight: 500;
     font-style: normal;
-    font-size: 3rem;
+    font-size: calc(3 * var(--default-font-size));
     text-transform: uppercase;
     line-height: 3rem;
+}
+
+h1 {
+    margin-bottom: 2rem;
+}
+
+h2 {
+    margin-bottom: 1.5rem;
 }
 
 h3 {
     font-family: carbon, sans-serif;
     font-weight: 300;
     font-style: normal;
-    letter-spacing: 2px;
-    font-size: 1.5rem;
+    letter-spacing: 3px;
+    font-size: calc(1.5 * var(--default-font-size));
     text-transform: uppercase;
+    margin-bottom: 1.25rem;
 }
 
-.heading::before {
+.heading.linked::before {
     content: "";
     display: block;
-    padding-top: 90px;
+    padding-top: 75px;
     margin-top: -45px;
 }
