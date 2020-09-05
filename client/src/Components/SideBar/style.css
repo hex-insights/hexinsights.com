@@ -6,8 +6,91 @@
     background-color: var(--background-color);
     width: var(--side-bar-width);
     height: 100vh;
-    border-right: 1px solid var(--color);
     position: fixed;
     top: 0;
     left: 0;
+}
+
+.side-bar .side-bar-border-piece-container {
+    position: absolute;
+    left: var(--side-bar-width);
+}
+
+.side-bar .side-bar-border-piece-container .triangle,
+.side-bar .side-bar-border-piece-container .border,
+.side-bar .side-bar-border-piece-container .hexagon {
+    fill: none;
+    stroke-miterlimit: 10;
+}
+
+.side-bar .side-bar-border-piece-container .triangle {
+    stroke: var(--background-color);
+    fill: var(--background-color);
+    fill-rule: evenodd;
+}
+
+.side-bar .side-bar-border-piece-container .border,
+.side-bar .side-bar-border-piece-container .hexagon {
+    stroke: var(--color);
+}
+
+.side-bar .side-bar-border-piece-container .hexagon {
+    fill: var(--background-color);
+    fill-rule: evenodd;
+}
+
+.side-bar .side-bar-border-piece-container svg .animate-on-mount {
+    stroke-dasharray: var(--path-length);
+    --side-bar-animation-duration: 1.5s;
+    --side-bar-animation-delay: 1s;
+    --side-bar-top-bottom-animation-duration: .5s;
+}
+
+.side-bar .side-bar-border-piece-container svg .border.animate-on-mount {
+    animation: draw-svg var(--side-bar-top-bottom-animation-duration) var(--default-animation-timing-fuction) calc(var(--side-bar-animation-duration) + var(--side-bar-animation-delay)) both;
+}
+
+.side-bar .side-bar-border-middle-container svg .border.animate-on-mount {
+    animation: draw-svg-from-center var(--side-bar-animation-duration) linear var(--side-bar-animation-delay) both;
+}
+
+.side-bar .side-bar-border-piece-container svg .hexagon.animate-on-mount {
+    animation:
+        draw-svg
+        var(--side-bar-animation-duration)
+        var(--default-animation-timing-fuction)
+        calc(var(--side-bar-animation-duration) + var(--side-bar-animation-delay) + var(--side-bar-top-bottom-animation-duration) / 2)
+        both
+    ;
+}
+
+.side-bar .side-bar-border-top-container {
+    width: 83.23px;
+    height: var(--border-top-height);
+    top: 0;
+}
+
+.side-bar .side-bar-border-top-container svg {
+    width: 100%;
+}
+
+.side-bar .side-bar-border-middle-container {
+    width: 1px;
+    height: calc(100vh - 2 * var(--border-top-height) + 2px);
+    overflow: hidden;
+    top: calc(var(--border-top-height) - 1px);
+}
+
+.side-bar .side-bar-border-middle-container svg {
+    width: 100%;
+}
+
+.side-bar .side-bar-border-bottom-container {
+    width: 83.23px;
+    height: var(--border-bottom-height);
+    bottom: 0;
+}
+
+.side-bar .side-bar-border-bottom-container svg {
+    width: 100%;
 }
