@@ -1,21 +1,13 @@
 import React from "react";
 import Logo from "../../Components/Logo";
 import { isScrollPastLanding } from "../../Modules/scroll-utils";
+import WindowContext from "../../Contexts/WindowContext";
 import "./style.css";
 
 
 export default function SideBar() {
-    const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
+    const { windowHeight } = React.useContext(WindowContext);
     const [showTopIcon, setShowTopIcon] = React.useState(isScrollPastLanding());
-
-    React.useEffect(() => {
-        function resizeHandler() {
-            setWindowHeight(window.innerHeight);
-        }
-
-        window.addEventListener("resize", resizeHandler);
-        return () => window.removeEventListener("resize", resizeHandler);
-    }, []);
 
     React.useEffect(() => {
         function scrollHandler() {
@@ -30,6 +22,7 @@ export default function SideBar() {
     const style = {"--border-top-height": `${borderTopHeightPx}px`} as React.CSSProperties;
     const topBorderStyle = {"--path-length": 129.14} as React.CSSProperties;
     const middleBorderLength = windowHeight - 2 * borderTopHeightPx + 2;
+    const middleBorderContainerStyle = {height: `${middleBorderLength}px`} as React.CSSProperties;
     const middleBorderStyle = {
         "--path-length": middleBorderLength,
         "--negative-half-path-length": -1 * middleBorderLength / 2, // calc() doesn't work in CSS keyframes definition
@@ -40,6 +33,7 @@ export default function SideBar() {
     return (
         <div style={ style } className="side-bar">
             { showTopIcon && <Logo size="small" animateOnMount/> }
+
             <div className="side-bar-border-piece-container side-bar-border-top-container">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84.5 82.54">
                     <g id="side-bar-border-top" data-name="Side Bar Border Top">
@@ -51,7 +45,7 @@ export default function SideBar() {
                 </svg>
             </div>
 
-            <div className="side-bar-border-piece-container side-bar-border-middle-container">
+            <div style={ middleBorderContainerStyle } className="side-bar-border-piece-container side-bar-border-middle-container">
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox={ `0 0 1 ${windowHeight}` }>
                     <g id="side-bar-border-middle" data-name="Side Bar Border Middle">
                         <g id="side-bar-border-middle-inner">
