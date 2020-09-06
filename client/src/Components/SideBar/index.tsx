@@ -1,43 +1,51 @@
 import React from "react";
+import Logo from "../../Components/Logo";
+import { isScrollPastLanding } from "../../Modules/scroll-utils";
 import "./style.css";
 
 
-const SideBar: React.FC = () => {
+export default function SideBar() {
     const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
+    const [showTopIcon, setShowTopIcon] = React.useState(isScrollPastLanding());
 
     React.useEffect(() => {
-        function updateWindowHeight() {
+        function resizeHandler() {
             setWindowHeight(window.innerHeight);
         }
 
-        window.addEventListener("resize", updateWindowHeight);
-        return () => window.removeEventListener("resize", updateWindowHeight);
+        window.addEventListener("resize", resizeHandler);
+        return () => window.removeEventListener("resize", resizeHandler);
     }, []);
 
-    const borderTopHeightPx = 49.61;
-    const borderBottomHeightPx = 88.26;
+    React.useEffect(() => {
+        function scrollHandler() {
+            setShowTopIcon(isScrollPastLanding());
+        }
+        window.addEventListener("scroll", scrollHandler);
+        return () => window.removeEventListener("scroll", scrollHandler);
+    }, []);
 
-    const style = {
-        "--border-top-height": `${borderTopHeightPx}px`,
-        "--border-bottom-height": `${borderBottomHeightPx}px`,
-    } as React.CSSProperties;
-    const topBorderStyle = {"--path-length": 96.64} as React.CSSProperties;
+    const borderTopHeightPx = 81.61;
+
+    const style = {"--border-top-height": `${borderTopHeightPx}px`} as React.CSSProperties;
+    const topBorderStyle = {"--path-length": 129.14} as React.CSSProperties;
     const middleBorderLength = windowHeight - 2 * borderTopHeightPx + 2;
     const middleBorderStyle = {
         "--path-length": middleBorderLength,
         "--negative-half-path-length": -1 * middleBorderLength / 2, // calc() doesn't work in CSS keyframes definition
     } as React.CSSProperties;
-    const bottomBorderStyle = {"--path-length": 96.64} as React.CSSProperties;
+    const bottomBorderStyle = {"--path-length": 129.14} as React.CSSProperties;
     const bottomHexagonStyle = {"--path-length": 121.77} as React.CSSProperties;
 
     return (
         <div style={ style } className="side-bar">
+            { showTopIcon && <Logo size="small" animateOnMount/> }
             <div className="side-bar-border-piece-container side-bar-border-top-container">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 50.54">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84.5 82.54">
                     <g id="side-bar-border-top" data-name="Side Bar Border Top">
                         <g id="side-bar-border-top-inner">
-                            <polyline className="triangle" points="0.5 49.5 0.5 0.5 83.5 0.5 83.5 1 0.27 50.11"/>
-                            <line style={ topBorderStyle } className="border animate-on-mount" x1="0.27" y1="50.11" x2="83.5" y2="1"/>
+                            <polygon className="border-fill" points="83.5 0.5 83.5 32.5 0.5 81.5 0.5 0.5 83.5 0.5"/>
+                            <polyline style={ topBorderStyle } className="border animate-on-mount" points="0.77 82.11 84 33 84 0.5"/>
                         </g>
                     </g>
                 </svg>
@@ -54,12 +62,12 @@ const SideBar: React.FC = () => {
             </div>
 
             <div className="side-bar-border-piece-container side-bar-border-bottom-container">
-                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84 89.34">
+                <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84.5 121.43">
                     <g id="side-bar-border-bottom" data-name="Side Bar Border Middle">
                         <g id="ide-bar-border-bottom-inner">
-                            <polyline className="triangle" points="0.5 39.84 0.5 88.84 83.5 88.84 83.5 88.34 0.27 39.23"/>
-                            <line style={ bottomBorderStyle } className="border animate-on-mount" x1="0.27" y1="38.73" x2="83.5" y2="87.84"/>
-                            <polygon style={ bottomHexagonStyle } className="hexagon animate-on-mount" points="30.08 0.58 12.5 10.72 12.5 31.02 30.08 41.17 47.65 31.02 47.65 10.72 30.08 0.58"/>
+                            <polygon className="border-fill" points="83.5 120.93 83.5 88.93 0.5 39.93 0.5 120.93 83.5 120.93"/>
+                            <polyline style={ bottomBorderStyle } className="border animate-on-mount" points="0.77 39.33 84 88.43 84 120.93"/>
+                            <polygon style={ bottomHexagonStyle } className="hexagon animate-on-mount" points="30.58 0.58 13 10.72 13 31.02 30.58 41.17 48.15 31.02 48.15 10.72 30.58 0.58"/>
                         </g>
                     </g>
                 </svg>
@@ -67,5 +75,3 @@ const SideBar: React.FC = () => {
         </div>
     )
 }
-
-export default SideBar;

@@ -1,21 +1,29 @@
-.logo-container .logo-cls-1,
-.logo-container .logo-cls-2 {
+.logo-container .i-line,
+.logo-container .hexagon {
     fill: none;
     stroke: var(--color);
     stroke-miterlimit: 10;
 }
 
-.logo-container .logo-cls-2 {
+.logo-container .hexagon {
     fill-rule: evenodd;
 }
 
 .logo-container svg polygon,
-.logo-container svg path {
+.logo-container svg path,
+.logo-container svg line {
     stroke-dasharray: var(--path-length);
 }
 
 
 .logo-container.animate-on-mount svg polygon,
-.logo-container.animate-on-mount svg path {
+.logo-container.animate-on-mount svg path,
+.logo-container.animate-on-mount svg line {
     animation: draw-svg 2s var(--default-animation-timing-fuction) .5s both;
+}
+
+.logo-container.small.animate-on-mount svg polygon,
+.logo-container.small.animate-on-mount svg path,
+.logo-container.small.animate-on-mount svg line {
+    animation-duration: 1s;
 }

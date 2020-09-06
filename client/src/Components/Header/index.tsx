@@ -1,29 +1,18 @@
 import React from "react";
+import { isScrollPastLanding } from "../../Modules/scroll-utils";
 import "./style.css";
 
 
 const Header: React.FC = () => {
-    const [showHeader, setShowHeader] = React.useState(false);
-
-    const updateShowHeader = React.useCallback(() => {
-        if (window.scrollY >= window.innerHeight) {
-            setShowHeader(true);
-        } else {
-            setShowHeader(false);
-        }
-    }, []);
-
-    React.useEffect(() => {
-        updateShowHeader();
-    }, []);
+    const [showHeader, setShowHeader] = React.useState(isScrollPastLanding());
 
     React.useEffect(() => {
         function scrollHandler() {
-            updateShowHeader();
+            setShowHeader(isScrollPastLanding());
         }
         window.addEventListener("scroll", scrollHandler);
         return () => window.removeEventListener("scroll", scrollHandler);
-    }, [updateShowHeader]);
+    }, []);
 
     return (
         <header className={ showHeader ? "" : "hidden" }>

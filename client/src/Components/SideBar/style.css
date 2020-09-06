@@ -9,21 +9,23 @@
     position: fixed;
     top: 0;
     left: 0;
+
+    --logo-top: .3rem;
+    --logo-width: 2.5rem;
+    --root-3: 1.7320508076;
+    --logo-height: calc(2 * var(--logo-width) / var(--root-3));
+
+    --border-bottom-height: 120.35px;
 }
 
-.side-bar .side-bar-border-piece-container {
-    position: absolute;
-    left: var(--side-bar-width);
-}
-
-.side-bar .side-bar-border-piece-container .triangle,
+.side-bar .side-bar-border-piece-container .border-fill,
 .side-bar .side-bar-border-piece-container .border,
 .side-bar .side-bar-border-piece-container .hexagon {
     fill: none;
     stroke-miterlimit: 10;
 }
 
-.side-bar .side-bar-border-piece-container .triangle {
+.side-bar .side-bar-border-piece-container .border-fill {
     stroke: var(--background-color);
     fill: var(--background-color);
     fill-rule: evenodd;
@@ -64,8 +66,20 @@
     ;
 }
 
+.side-bar .logo-container,
+.side-bar .side-bar-border-piece-container {
+    position: absolute;
+    left: var(--side-bar-width);
+}
+
+.side-bar .logo-container {
+    width: var(--logo-width);
+    top: var(--logo-top);
+    z-index: 1;
+}
+
 .side-bar .side-bar-border-top-container {
-    width: 83.23px;
+    width: 83.5px;
     height: var(--border-top-height);
     top: 0;
 }
@@ -86,7 +100,7 @@
 }
 
 .side-bar .side-bar-border-bottom-container {
-    width: 83.23px;
+    width: 83.5px;
     height: var(--border-bottom-height);
     bottom: 0;
 }
