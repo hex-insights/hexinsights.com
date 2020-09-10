@@ -21,10 +21,10 @@ module.exports = {
         name: `hex-insights-website`,
         short_name: `hex`,
         start_url: `/`,
+        theme_color: `#5db18a`,
         background_color: `#0f1a25`,
-        theme_color: `#0f1a25`,
         display: `minimal-ui`,
-        // icon: `src/images/hex-icon.png`, // This path is relative to the root of the site.
+        icon: `src/images/icon.png`,
       },
     },
     // this (optional) plugin enables Progressive Web App + Offline functionality
