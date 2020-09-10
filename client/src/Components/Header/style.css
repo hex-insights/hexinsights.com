@@ -14,7 +14,7 @@ header {
     transition:
         background-color
         var(--header-background-animation-duration)
-        var(--default-animation-timing-fuction)
+        var(--default-animation-timing-function)
         calc(var(--header-middle-border-animation-duration) + var(--header-border-animation-delay) + var(--header-side-border-animation-duration))
     ;
 
@@ -135,7 +135,7 @@ header .header-border-right-container svg .border.animate-on-mount {
     animation:
         draw-svg
         var(--header-side-border-animation-duration)
-        var(--default-animation-timing-fuction)
+        var(--default-animation-timing-function)
         calc(var(--header-middle-border-animation-duration) + var(--header-border-animation-delay))
         both
     ;
@@ -156,7 +156,7 @@ header .header-border-piece-container svg .border-fill.animate-on-mount {
     animation:
         fade-in
         var(--header-background-animation-duration)
-        var(--default-animation-timing-fuction)
+        var(--default-animation-timing-function)
         calc(var(--header-middle-border-animation-duration) + var(--header-border-animation-delay) + var(--header-side-border-animation-duration))
         both
     ;

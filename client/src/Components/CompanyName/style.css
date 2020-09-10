@@ -29,7 +29,7 @@
     --base-animation-delay: 0;
     --letter-animation-spacing: .25s;
     --letter-animation-order: 0;
-    animation: draw-svg 1.5s var(--default-animation-timing-fuction) 0s both;
+    animation: draw-svg 1.5s var(--default-animation-timing-function) 0s both;
     animation-delay: calc(var(--base-animation-delay) + var(--letter-animation-spacing) * var(--letter-animation-order));
 }
 

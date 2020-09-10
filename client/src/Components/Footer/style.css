@@ -24,7 +24,7 @@ footer {
     animation:
         fade-footer-background-in
         var(--footer-background-animation-duration)
-        var(--default-animation-timing-fuction)
+        var(--default-animation-timing-function)
         calc(var(--footer-middle-border-animation-duration) + var(--footer-border-animation-delay) + var(--footer-side-border-animation-duration))
         both
     ;
@@ -94,7 +94,7 @@ footer .footer-border-left-container svg .border.animate-on-mount {
     animation:
         draw-svg
         var(--footer-side-border-animation-duration)
-        var(--default-animation-timing-fuction)
+        var(--default-animation-timing-function)
         calc(var(--footer-middle-border-animation-duration) + var(--footer-border-animation-delay))
         both
     ;
@@ -115,7 +115,7 @@ footer .footer-border-piece-container svg .border-fill.animate-on-mount {
     animation:
         fade-in
         var(--footer-background-animation-duration)
-        var(--default-animation-timing-fuction)
+        var(--default-animation-timing-function)
         calc(var(--footer-middle-border-animation-duration) + var(--footer-border-animation-delay) + var(--footer-side-border-animation-duration))
         both
     ;

@@ -19,7 +19,7 @@
 .logo-container.animate-on-mount svg polygon,
 .logo-container.animate-on-mount svg path,
 .logo-container.animate-on-mount svg line {
-    animation: draw-svg 2s var(--default-animation-timing-fuction) .5s both;
+    animation: draw-svg 2s var(--default-animation-timing-function) .5s both;
 }
 
 .logo-container.small.animate-on-mount svg polygon,

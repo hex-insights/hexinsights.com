@@ -4,7 +4,7 @@
     --color: #5db18a;
     --background-color: #0f1a25;
 
-    --default-animation-timing-fuction: cubic-bezier(0.4, 0.2, 0.6, 1);
+    --default-animation-timing-function: cubic-bezier(0.4, 0.2, 0.6, 1);
 
     --iphone-browser-bottom-nav-height: 3.3rem;
 }
