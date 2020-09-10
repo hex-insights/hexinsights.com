@@ -2,11 +2,19 @@ import React from "react";
 import Header from "../Header";
 import SideBar from "../SideBar";
 import Footer from "../Footer";
-import WindowContext, { defaultWindowContext } from "../../Contexts/WindowContext";
+import WindowContext from "../../Contexts/WindowContext";
 import "./style.css";
 
 
-export default function Layout({ children }) {
+type LayoutProps = {
+    mainClassName?: string;
+    children: React.ReactNode;
+}
+
+
+export default function Layout(props: LayoutProps) {
+    const { mainClassName, children } = props;
+
     const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
 
     React.useEffect(() => {
@@ -36,7 +44,7 @@ export default function Layout({ children }) {
 
                 <SideBar/>
 
-                <main>
+                <main className={ mainClassName }>
                     { children }
                 </main>
 

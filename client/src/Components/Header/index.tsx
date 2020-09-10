@@ -1,21 +1,30 @@
 import React from "react";
 import CompanyName from "../CompanyName";
+import LocationContext from "../../Contexts/LocationContext";
+import { pagesWithHeaderHiddenAtTop } from "../../Modules/page-utils";
 import { isScrollPastLanding } from "../../Modules/scroll-utils";
 import { getDistance } from "../../Modules/math-utils";
 import "./style.css";
 
 
 const Header: React.FC = () => {
-    const [showHeader, setShowHeader] = React.useState(isScrollPastLanding());
+    const { pageTitle } = React.useContext(LocationContext);
+
+    const setHasMounted = React.useState(false)[1];
+    const [showHeader, setShowHeader] = React.useState(!pagesWithHeaderHiddenAtTop.includes(pageTitle) || isScrollPastLanding());
     const headerRef = React.useRef(null);
 
     React.useEffect(() => {
+        setHasMounted(true);
+    }, []);
+
+    React.useEffect(() => {
         function scrollHandler() {
-            setShowHeader(isScrollPastLanding());
+            setShowHeader(!pagesWithHeaderHiddenAtTop.includes(pageTitle) || isScrollPastLanding());
         }
         window.addEventListener("scroll", scrollHandler);
         return () => window.removeEventListener("scroll", scrollHandler);
-    }, []);
+    }, [pageTitle]);
 
     const headerWidth = headerRef.current !== null ? headerRef.current.getBoundingClientRect().width : 0;
     const headerHeight = 50;

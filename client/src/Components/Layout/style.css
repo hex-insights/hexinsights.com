@@ -1,5 +1,5 @@
 main {
     width: calc(100vw - var(--side-bar-width));
-    min-height: 300vh;
+    min-height: 100vh;
     margin-left: var(--side-bar-width);
 }

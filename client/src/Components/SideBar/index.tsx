@@ -1,21 +1,25 @@
 import React from "react";
 import Logo from "../../Components/Logo";
+import LocationContext from "../../Contexts/LocationContext";
+import { pagesWithHeaderHiddenAtTop } from "../../Modules/page-utils";
 import { isScrollPastLanding } from "../../Modules/scroll-utils";
 import WindowContext from "../../Contexts/WindowContext";
 import "./style.css";
 
 
 export default function SideBar() {
+    const { pageTitle } = React.useContext(LocationContext);
+
     const { windowHeight } = React.useContext(WindowContext);
-    const [showTopIcon, setShowTopIcon] = React.useState(isScrollPastLanding());
+    const [showTopIcon, setShowTopIcon] = React.useState(!pagesWithHeaderHiddenAtTop.includes(pageTitle) ||  isScrollPastLanding());
 
     React.useEffect(() => {
         function scrollHandler() {
-            setShowTopIcon(isScrollPastLanding());
+            setShowTopIcon(!pagesWithHeaderHiddenAtTop.includes(pageTitle) ||  isScrollPastLanding());
         }
         window.addEventListener("scroll", scrollHandler);
         return () => window.removeEventListener("scroll", scrollHandler);
-    }, []);
+    }, [pageTitle]);
 
     const borderTopHeightPx = 81.61;
 
