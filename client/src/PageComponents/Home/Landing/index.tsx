@@ -1,10 +1,10 @@
 import React from "react";
-import Logo from "../../../../Components/Logo";
-import CompanyName from "../../../../Components/CompanyName";
+import Logo from "../../../Components/Logo";
+import CompanyName from "../../../Components/CompanyName";
 import "./style.css";
 
 
-const LandingSection: React.FC = () => {
+export default function LandingSection() {
     return (
         <section className="landing">
             <div className="hero-container">
@@ -14,5 +14,3 @@ const LandingSection: React.FC = () => {
         </section>
     )
 }
-
-export default LandingSection;

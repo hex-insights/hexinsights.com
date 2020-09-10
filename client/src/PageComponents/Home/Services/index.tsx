@@ -1,8 +1,8 @@
 import React from "react";
-import Heading from "../../../../Components/Heading";
+import Heading from "../../../Components/Heading";
 
 
-const ServicesSection: React.FC = () => {
+export default function ServicesSection() {
     return (
         <section className="main-section services">
             <Heading id="services" level={ 2 }>What We Do</Heading>
@@ -42,5 +42,3 @@ const ServicesSection: React.FC = () => {
         </section>
     )
 }
-
-export default ServicesSection;

@@ -1,8 +1,8 @@
 import React from "react";
-import Heading from "../../../../Components/Heading";
+import Heading from "../../../Components/Heading";
 
 
-const ProcessSection: React.FC = () => {
+export default function ProcessSection() {
     return (
         <section className="main-section process">
             <Heading id="process" level={ 2 }>Our Process</Heading>
@@ -55,5 +55,3 @@ const ProcessSection: React.FC = () => {
         </section>
     )
 }
-
-export default ProcessSection;

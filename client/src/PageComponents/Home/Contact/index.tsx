@@ -1,8 +1,8 @@
 import React from "react";
-import Heading from "../../../../Components/Heading";
+import Heading from "../../../Components/Heading";
 
 
-const ContactSection: React.FC = () => {
+export default function ContactSection() {
     return (
         <section className="main-section contact">
             <Heading id="contact" level={ 2 }>Contact</Heading>
@@ -13,5 +13,3 @@ const ContactSection: React.FC = () => {
         </section>
     )
 }
-
-export default ContactSection;

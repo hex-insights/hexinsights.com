@@ -1,8 +1,8 @@
 import React from "react";
-import Heading from "../../../../Components/Heading";
+import Heading from "../../../Components/Heading";
 
 
-const IntroSection: React.FC = () => {
+export default function IntroSection() {
     return (
         <section className="main-section intro">
             <Heading id="intro" level={ 2 }>Custom Fit</Heading>
@@ -26,5 +26,3 @@ const IntroSection: React.FC = () => {
         </section>
     )
 }
-
-export default IntroSection;

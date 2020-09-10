@@ -2,11 +2,11 @@ import React from "react";
 import { PageProps } from "gatsby";
 import SEO from "../../Components/SEO";
 import Layout from "../../Components/Layout";
-import LandingSection from "./Sections/Landing";
-import IntroSection from "./Sections/Intro";
-import ServicesSection from "./Sections/Services";
-import ProcessSection from "./Sections/Process";
-import ContactSection from "./Sections/Contact";
+import LandingSection from "../../PageComponents/Home/Landing";
+import IntroSection from "../../PageComponents/Home/Intro";
+import ServicesSection from "../../PageComponents/Home/Services";
+import ProcessSection from "../../PageComponents/Home/Process";
+import ContactSection from "../../PageComponents/Home/Contact";
 import LocationContext from "../../Contexts/LocationContext";
 import { PageTitle } from "../../Modules/page-utils";
 
