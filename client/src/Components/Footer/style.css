@@ -1,5 +1,122 @@
+@keyframes fade-footer-background-in {
+    0% {
+        background-color: transparent;
+    }
+
+    100% {
+        background-color: var(--background-color);
+    }
+}
+
 footer {
-    width: 100%;
+    width: 50%;
+    height: var(--footer-height);
     padding: 1rem 2rem;
-    border-top: 1px solid var(--color);
+    position: absolute;
+    bottom: 0;
+    right: 0;
+
+    --footer-middle-border-animation-duration: .75s;
+    --footer-border-animation-delay: 0s;
+    --footer-side-border-animation-duration: .6s;
+    --footer-background-animation-duration: .5s;
+
+    animation:
+        fade-footer-background-in
+        var(--footer-background-animation-duration)
+        var(--default-animation-timing-fuction)
+        calc(var(--footer-middle-border-animation-duration) + var(--footer-border-animation-delay) + var(--footer-side-border-animation-duration))
+        both
+    ;
+}
+
+footer .footer-content {
+    font-size: calc(var(--default-font-size) * 0.75);
+}
+
+@media (min-width: 900px) {
+    footer .footer-content {
+        font-size: var(--default-font-size);
+    }
+}
+
+footer .footer-border-piece-container .border-fill,
+footer .footer-border-piece-container .border {
+    fill: none;
+    stroke-miterlimit: 10;
+}
+
+footer .footer-border-piece-container .border-fill {
+    stroke: var(--background-color);
+    fill: var(--background-color);
+    fill-rule: evenodd;
+}
+
+footer .footer-border-piece-container .border {
+    stroke: var(--color);
+}
+
+footer .footer-border-piece-container {
+    position: absolute;
+}
+
+footer .footer-border-left-container {
+    height: var(--height);
+    width: var(--side-border-width);
+}
+
+footer .footer-border-left-container {
+    top: 0;
+    left: calc(-1 * var(--side-border-width));
+}
+
+footer .footer-border-middle-container {
+    width: var(--middle-border-width);
+    height: 1px;
+    top: 0;
+    left: var(--middle-border-left-offset);
+}
+
+footer .footer-border-piece-container svg {
+    width: 100%;
+    height: auto;
+}
+
+footer .footer-border-middle-container svg {
+    position: absolute;
+}
+
+footer .footer-border-piece-container svg .animate-on-mount {
+    stroke-dasharray: var(--path-length);
+}
+
+footer .footer-border-left-container svg .border.animate-on-mount {
+    animation:
+        draw-svg
+        var(--footer-side-border-animation-duration)
+        var(--default-animation-timing-fuction)
+        calc(var(--footer-middle-border-animation-duration) + var(--footer-border-animation-delay))
+        both
+    ;
+}
+
+footer .footer-border-middle-container svg .border.animate-on-mount {
+    animation:
+        draw-svg-from-center
+        var(--footer-middle-border-animation-duration)
+        linear
+        var(--footer-border-animation-delay)
+        backwards
+    ;
+}
+
+footer .footer-border-piece-container svg .border-fill.animate-on-mount {
+    --opacity: 1;
+    animation:
+        fade-in
+        var(--footer-background-animation-duration)
+        var(--default-animation-timing-fuction)
+        calc(var(--footer-middle-border-animation-duration) + var(--footer-border-animation-delay) + var(--footer-side-border-animation-duration))
+        both
+    ;
 }
