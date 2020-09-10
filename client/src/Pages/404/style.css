@@ -10,3 +10,8 @@ main.not-found .not-found-content {
     justify-content: center;
     align-items: center;
 }
+
+main.not-found h1 {
+    font-size: 8vw;
+    z-index: -1;
+}
