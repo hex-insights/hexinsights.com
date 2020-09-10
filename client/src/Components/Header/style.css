@@ -1,19 +1,163 @@
 header {
     background-color: var(--background-color);
-    border: 1px solid var(--color);
-    border-top: none;
-    border-right: none;
+    height: var(--height);
+    padding: 0 1rem;
     position: fixed;
     top: 0;
     right: 0;
-    transition: opacity .25s ease-out;
-}
 
-header.hidden {
+    --header-middle-border-animation-duration: .75s;
+    --header-border-animation-delay: 0s;
+    --header-side-border-animation-duration: .6s;
+    --header-background-animation-duration: .5s;
+
+    transition:
+        background-color
+        var(--header-background-animation-duration)
+        var(--default-animation-timing-fuction)
+        calc(var(--header-middle-border-animation-duration) + var(--header-border-animation-delay) + var(--header-side-border-animation-duration))
+    ;
+
     opacity: 0;
     pointer-events: none;
 }
 
+header.hidden {
+    background-color: transparent;
+    opacity: 0;
+    pointer-events: none;
+}
+
+@media (min-width: 900px) {
+    header {
+        opacity: 1;
+        pointer-events: unset;
+    }
+}
+
 header h1 {
+    width: 0;
+    height: 0;
+    padding: 0;
     margin: 0;
+    opacity: 0;
+    pointer-events: none;
+    overflow: hidden;
+}
+
+header .company-name-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-flow: row;
+    align-items: center;
+}
+
+header .company-name-word-container {
+    height: 1.25rem;
+}
+
+header .company-name-hex-container {
+    margin-right: 1.25rem;
+}
+
+header .company-name-word-container .company-name-letter {
+    stroke-width: 1.25;
+}
+
+header .company-name-word-container svg {
+    height: 100%;
+    width: auto;
+}
+
+header .company-name-word-container.animate-on-mount svg path {
+    --base-animation-delay: .75s;
+}
+
+header .header-border-piece-container .border-fill,
+header .header-border-piece-container .border {
+    fill: none;
+    stroke-miterlimit: 10;
+}
+
+header .header-border-piece-container .border-fill {
+    stroke: var(--background-color);
+    fill: var(--background-color);
+    fill-rule: evenodd;
+}
+
+header .header-border-piece-container .border {
+    stroke: var(--color);
+}
+
+header .header-border-piece-container {
+    position: absolute;
+}
+
+header .header-border-left-container,
+header .header-border-right-container {
+    height: var(--height);
+    width: var(--side-border-width);
+}
+
+header .header-border-left-container {
+    top: 0;
+    left: calc(-1 * var(--side-border-width));
+}
+
+header .header-border-middle-container {
+    width: var(--middle-border-width);
+    height: 1px;
+    bottom: 0;
+    left: var(--middle-border-left-offset);
+}
+
+header .header-border-right-container {
+    bottom: calc(-1 * var(--height));
+    right: 0;
+}
+
+header .header-border-piece-container svg {
+    width: 100%;
+    height: auto;
+}
+
+header .header-border-middle-container svg {
+    position: absolute;
+}
+
+header .header-border-piece-container svg .animate-on-mount {
+    stroke-dasharray: var(--path-length);
+}
+
+header .header-border-left-container svg .border.animate-on-mount,
+header .header-border-right-container svg .border.animate-on-mount {
+    animation:
+        draw-svg
+        var(--header-side-border-animation-duration)
+        var(--default-animation-timing-fuction)
+        calc(var(--header-middle-border-animation-duration) + var(--header-border-animation-delay))
+        both
+    ;
+}
+
+header .header-border-middle-container svg .border.animate-on-mount {
+    animation:
+        draw-svg-from-center
+        var(--header-middle-border-animation-duration)
+        linear
+        var(--header-border-animation-delay)
+        backwards
+    ;
+}
+
+header .header-border-piece-container svg .border-fill.animate-on-mount {
+    --opacity: 1;
+    animation:
+        fade-in
+        var(--header-background-animation-duration)
+        var(--default-animation-timing-fuction)
+        calc(var(--header-middle-border-animation-duration) + var(--header-border-animation-delay) + var(--header-side-border-animation-duration))
+        both
+    ;
 }

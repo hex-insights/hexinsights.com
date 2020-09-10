@@ -3,6 +3,7 @@
 :root {
     --color: #5db18a;
     --background-color: #0f1a25;
+
     --default-animation-timing-fuction: cubic-bezier(0.4, 0.2, 0.6, 1);
 
     --iphone-browser-bottom-nav-height: 3.3rem;
@@ -62,11 +63,21 @@ a {
 @keyframes draw-svg-from-center {
     0% {
         stroke-dasharray: 0 var(--path-length);
-        stroke-dashoffset: var(--negative-half-path-length);
+        stroke-dashoffset: var(--negative-half-path-length); /* must be defined in JS or literal, calc() doesn't work in CSS keyframes definition */
     }
 
     100% {
         stroke-dasharray: var(--path-length) var(--path-length);
         stroke-dashoffset: 0;
+    }
+}
+
+@keyframes fade-in {
+    0% {
+        opacity: 0;
+    }
+
+    100% {
+        opacity: var(--opacity);
     }
 }

@@ -44,26 +44,38 @@
 
 .side-bar .side-bar-border-piece-container svg .animate-on-mount {
     stroke-dasharray: var(--path-length);
-    --side-bar-animation-duration: 1.5s;
-    --side-bar-animation-delay: 1s;
-    --side-bar-top-bottom-animation-duration: .5s;
+    --side-bar--middle-border-animation-duration: 1.5s;
+    --side-bar-border-animation-delay: 1s;
+    --side-bar-top-bottom-border-animation-duration: .5s;
 }
 
 .side-bar .side-bar-border-top-container svg .border.animate-on-mount,
 .side-bar .side-bar-border-bottom-container svg .border.animate-on-mount {
-    animation: draw-svg var(--side-bar-top-bottom-animation-duration) var(--default-animation-timing-fuction) calc(var(--side-bar-animation-duration) + var(--side-bar-animation-delay)) both;
+    animation:
+        draw-svg
+        var(--side-bar-top-bottom-border-animation-duration)
+        var(--default-animation-timing-fuction)
+        calc(var(--side-bar--middle-border-animation-duration) + var(--side-bar-border-animation-delay))
+        both
+    ;
 }
 
 .side-bar .side-bar-border-middle-container svg .border.animate-on-mount {
-    animation: draw-svg-from-center var(--side-bar-animation-duration) linear var(--side-bar-animation-delay) backwards;
+    animation:
+        draw-svg-from-center
+        var(--side-bar--middle-border-animation-duration)
+        linear
+        var(--side-bar-border-animation-delay)
+        backwards
+    ;
 }
 
 .side-bar .side-bar-border-piece-container svg .hexagon.animate-on-mount {
     animation:
         draw-svg
-        var(--side-bar-animation-duration)
+        var(--side-bar--middle-border-animation-duration)
         var(--default-animation-timing-fuction)
-        calc(var(--side-bar-animation-duration) + var(--side-bar-animation-delay) + var(--side-bar-top-bottom-animation-duration) / 2)
+        calc(var(--side-bar--middle-border-animation-duration) + var(--side-bar-border-animation-delay) + var(--side-bar-top-bottom-border-animation-duration) / 2)
         both
     ;
 }
