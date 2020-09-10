@@ -1,13 +1,3 @@
-@keyframes fade-footer-background-in {
-    0% {
-        background-color: transparent;
-    }
-
-    100% {
-        background-color: var(--background-color);
-    }
-}
-
 footer {
     width: 50%;
     height: var(--footer-height);
@@ -22,7 +12,7 @@ footer {
     --footer-background-animation-duration: .5s;
 
     animation:
-        fade-footer-background-in
+        fade-background-color-in
         var(--footer-background-animation-duration)
         var(--default-animation-timing-function)
         calc(var(--footer-middle-border-animation-duration) + var(--footer-border-animation-delay) + var(--footer-side-border-animation-duration))

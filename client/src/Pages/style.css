@@ -86,3 +86,13 @@ a {
         opacity: var(--opacity);
     }
 }
+
+@keyframes fade-background-color-in {
+    0% {
+        background-color: transparent;
+    }
+
+    100% {
+        background-color: var(--background-color);
+    }
+}

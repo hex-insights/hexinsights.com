@@ -16,6 +16,19 @@
     --logo-height: calc(2 * var(--logo-width) / var(--root-3));
 
     --border-bottom-height: 120.35px;
+
+    --side-bar-middle-border-animation-duration: 1.5s;
+    --side-bar-border-animation-delay: 1s;
+    --side-bar-top-bottom-border-animation-duration: .75s;
+    --side-bar-background-animation-duration: .5s;
+
+    animation:
+        fade-background-color-in
+        var(--side-bar-background-animation-duration)
+        var(--default-animation-timing-function)
+        calc(var(--side-bar-middle-border-animation-duration) + var(--side-bar-border-animation-delay) + var(--side-bar-top-bottom-border-animation-duration))
+        both
+    ;
 }
 
 .side-bar .side-bar-border-piece-container .border-fill,
@@ -44,9 +57,6 @@
 
 .side-bar .side-bar-border-piece-container svg .animate-on-mount {
     stroke-dasharray: var(--path-length);
-    --side-bar--middle-border-animation-duration: 1.5s;
-    --side-bar-border-animation-delay: 1s;
-    --side-bar-top-bottom-border-animation-duration: .5s;
 }
 
 .side-bar .side-bar-border-top-container svg .border.animate-on-mount,
@@ -55,7 +65,7 @@
         draw-svg
         var(--side-bar-top-bottom-border-animation-duration)
         var(--default-animation-timing-function)
-        calc(var(--side-bar--middle-border-animation-duration) + var(--side-bar-border-animation-delay))
+        calc(var(--side-bar-middle-border-animation-duration) + var(--side-bar-border-animation-delay))
         both
     ;
 }
@@ -63,7 +73,7 @@
 .side-bar .side-bar-border-middle-container svg .border.animate-on-mount {
     animation:
         draw-svg-from-center
-        var(--side-bar--middle-border-animation-duration)
+        var(--side-bar-middle-border-animation-duration)
         linear
         var(--side-bar-border-animation-delay)
         backwards
@@ -73,9 +83,9 @@
 .side-bar .side-bar-border-piece-container svg .hexagon.animate-on-mount {
     animation:
         draw-svg
-        var(--side-bar--middle-border-animation-duration)
+        var(--side-bar-middle-border-animation-duration)
         var(--default-animation-timing-function)
-        calc(var(--side-bar--middle-border-animation-duration) + var(--side-bar-border-animation-delay) + var(--side-bar-top-bottom-border-animation-duration) / 2)
+        calc(var(--side-bar-middle-border-animation-duration) + var(--side-bar-border-animation-delay) + var(--side-bar-top-bottom-border-animation-duration) / 2)
         both
     ;
 }
@@ -121,4 +131,15 @@
 
 .side-bar .side-bar-border-bottom-container svg {
     width: 100%;
+}
+
+.side-bar .side-bar-border-piece-container svg .border-fill.animate-on-mount {
+    --opacity: 1;
+    animation:
+        fade-in
+        var(--side-bar-background-animation-duration)
+        var(--default-animation-timing-function)
+        calc(var(--side-bar-middle-border-animation-duration) + var(--side-bar-border-animation-delay) + var(--side-bar-top-bottom-border-animation-duration))
+        both
+    ;
 }

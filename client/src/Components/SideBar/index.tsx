@@ -38,7 +38,7 @@ export default function SideBar() {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84.5 82.54">
                     <g id="side-bar-border-top" data-name="Side Bar Border Top">
                         <g id="side-bar-border-top-inner">
-                            <polygon className="border-fill" points="83.5 0.5 83.5 32.5 0.5 81.5 0.5 0.5 83.5 0.5"/>
+                            <polygon className="border-fill animate-on-mount" points="83.5 0.5 83.5 32.5 0.5 81.5 0.5 0.5 83.5 0.5"/>
                             <polyline style={ topBorderStyle } className="border animate-on-mount" points="0.77 82.11 84 33 84 0.5"/>
                         </g>
                     </g>
@@ -59,7 +59,7 @@ export default function SideBar() {
                 <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 84.5 121.43">
                     <g id="side-bar-border-bottom" data-name="Side Bar Border Middle">
                         <g id="side-bar-border-bottom-inner">
-                            <polygon className="border-fill" points="83.5 120.93 83.5 88.93 0.5 39.93 0.5 120.93 83.5 120.93"/>
+                            <polygon className="border-fill animate-on-mount" points="83.5 120.93 83.5 88.93 0.5 39.93 0.5 120.93 83.5 120.93"/>
                             <polyline style={ bottomBorderStyle } className="border animate-on-mount" points="0.77 39.33 84 88.43 84 120.93"/>
                             <polygon style={ bottomHexagonStyle } className="hexagon animate-on-mount" points="30.58 0.58 13 10.72 13 31.02 30.58 41.17 48.15 31.02 48.15 10.72 30.58 0.58"/>
                         </g>
