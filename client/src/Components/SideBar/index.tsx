@@ -4,22 +4,29 @@ import LocationContext from "../../Contexts/LocationContext";
 import { pagesWithHeaderHiddenAtTop } from "../../Modules/page-utils";
 import { isScrollPastLanding } from "../../Modules/scroll-utils";
 import WindowContext from "../../Contexts/WindowContext";
+import useMounted from "../../Hooks/use-mounted";
 import "./style.css";
 
 
 export default function SideBar() {
     const { pageTitle } = React.useContext(LocationContext);
-
     const { windowHeight } = React.useContext(WindowContext);
-    const [showTopIcon, setShowTopIcon] = React.useState(!pagesWithHeaderHiddenAtTop.includes(pageTitle) ||  isScrollPastLanding());
+
+    const isMounted = useMounted();
+    const [showTopIcon, setShowTopIcon] = React.useState(!pagesWithHeaderHiddenAtTop.includes(pageTitle));
+
+    const updateShowTopIcon = React.useCallback(() => {
+        setShowTopIcon(!pagesWithHeaderHiddenAtTop.includes(pageTitle) ||  isScrollPastLanding());
+    }, [pageTitle]);
 
     React.useEffect(() => {
-        function scrollHandler() {
-            setShowTopIcon(!pagesWithHeaderHiddenAtTop.includes(pageTitle) ||  isScrollPastLanding());
-        }
-        window.addEventListener("scroll", scrollHandler);
-        return () => window.removeEventListener("scroll", scrollHandler);
-    }, [pageTitle]);
+        updateShowTopIcon();
+    }, [isMounted, updateShowTopIcon]);
+
+    React.useEffect(() => {
+        window.addEventListener("scroll", updateShowTopIcon);
+        return () => window.removeEventListener("scroll", updateShowTopIcon);
+    }, [updateShowTopIcon]);
 
     const borderTopHeightPx = 81.61;
 

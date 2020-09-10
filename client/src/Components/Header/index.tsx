@@ -4,27 +4,29 @@ import LocationContext from "../../Contexts/LocationContext";
 import { pagesWithHeaderHiddenAtTop } from "../../Modules/page-utils";
 import { isScrollPastLanding } from "../../Modules/scroll-utils";
 import { getDistance } from "../../Modules/math-utils";
+import useMounted from "../../Hooks/use-mounted";
 import "./style.css";
 
 
 const Header: React.FC = () => {
     const { pageTitle } = React.useContext(LocationContext);
 
-    const setHasMounted = React.useState(false)[1];
-    const [showHeader, setShowHeader] = React.useState(!pagesWithHeaderHiddenAtTop.includes(pageTitle) || isScrollPastLanding());
+    const isMounted = useMounted();
+    const [showHeader, setShowHeader] = React.useState(!pagesWithHeaderHiddenAtTop.includes(pageTitle));
     const headerRef = React.useRef(null);
 
-    React.useEffect(() => {
-        setHasMounted(true);
-    }, []);
+    const updateShowHeader = React.useCallback(() => {
+        setShowHeader(!pagesWithHeaderHiddenAtTop.includes(pageTitle) || isScrollPastLanding());
+    }, [pageTitle]);
 
     React.useEffect(() => {
-        function scrollHandler() {
-            setShowHeader(!pagesWithHeaderHiddenAtTop.includes(pageTitle) || isScrollPastLanding());
-        }
-        window.addEventListener("scroll", scrollHandler);
-        return () => window.removeEventListener("scroll", scrollHandler);
-    }, [pageTitle]);
+        updateShowHeader();
+    }, [isMounted, updateShowHeader]);
+
+    React.useEffect(() => {
+        window.addEventListener("scroll", updateShowHeader);
+        return () => window.removeEventListener("scroll", updateShowHeader);
+    }, [updateShowHeader]);
 
     const headerWidth = headerRef.current !== null ? headerRef.current.getBoundingClientRect().width : 0;
     const headerHeight = 50;

@@ -3,6 +3,7 @@ import Header from "../Header";
 import SideBar from "../SideBar";
 import Footer from "../Footer";
 import WindowContext from "../../Contexts/WindowContext";
+import useMounted from "../../Hooks/use-mounted";
 import "./style.css";
 
 
@@ -15,20 +16,25 @@ type LayoutProps = {
 export default function Layout(props: LayoutProps) {
     const { mainClassName, children } = props;
 
-    const [windowHeight, setWindowHeight] = React.useState(window.innerHeight);
+    const isMounted = useMounted();
+    const [windowHeight, setWindowHeight] = React.useState(0);
+
+    const updateWindowHeight = React.useCallback(() => {
+        setWindowHeight(window.innerHeight);
+    }, []);
 
     React.useEffect(() => {
-        function resizeHandler() {
-            setWindowHeight(window.innerHeight);
-        }
+        updateWindowHeight();
+    }, [isMounted, updateWindowHeight]);
 
-        window.addEventListener("resize", resizeHandler);
-        window.addEventListener("orientationchange", resizeHandler);
+    React.useEffect(() => {
+        window.addEventListener("resize", updateWindowHeight);
+        window.addEventListener("orientationchange", updateWindowHeight);
         return () => {
-            window.removeEventListener("resize", resizeHandler);
-            window.removeEventListener("orientationchange", resizeHandler);
+            window.removeEventListener("resize", updateWindowHeight);
+            window.removeEventListener("orientationchange", updateWindowHeight);
         }
-    }, []);
+    }, [updateWindowHeight]);
 
     const windowContextValue = {
         windowHeight,

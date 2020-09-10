@@ -1,17 +1,14 @@
 import React from "react";
 import { getDistance } from "../../Modules/math-utils";
+import useMounted from "../../Hooks/use-mounted";
 import "./style.css";
 
 
 const Footer: React.FC = () => {
-    const [hasMounted, setHasMounted] = React.useState(false);
+    const isMounted = useMounted();
     const [footerWidth, setFooterWidth] = React.useState(0);
     const [footerHeight, setFooterHeight] = React.useState(0);
     const footerRef = React.useRef(null);
-
-    React.useEffect(() => {
-        setHasMounted(true);
-    }, []);
 
     const setFooterDimensions = React.useCallback(() => {
         const footerBoundingClientRect = footerRef.current !== null ? footerRef.current.getBoundingClientRect() : {};
@@ -21,7 +18,7 @@ const Footer: React.FC = () => {
 
     React.useEffect(() => {
         setFooterDimensions();
-    }, [hasMounted, setFooterDimensions]);
+    }, [isMounted, setFooterDimensions]);
 
     React.useEffect(() => {
         window.addEventListener("resize", setFooterDimensions);
